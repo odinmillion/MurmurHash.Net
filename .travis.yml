@@ -1,0 +1,10 @@
+language: csharp
+dist: xenial
+mono: none
+dotnet: 2.2
+solution: MurmurHash.Net.sln
+
+script: 
+  - dotnet restore
+  - dotnet build --configuration Release
+  - dotnet test tests/MurmurHash.Net.Tests/MurmurHash.Net.Tests.csproj --configuration Release --no-restore --no-build --verbosity normal

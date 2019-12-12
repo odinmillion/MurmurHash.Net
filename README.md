@@ -1,2 +1,2 @@
 # MurmurHash.Net
-Extremely fast MurmurHash implementation with zero heap allocations
+Extremely fast MurmurHash3 implementation with zero heap allocations

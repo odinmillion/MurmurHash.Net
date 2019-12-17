@@ -37,8 +37,7 @@ uint hash = MurmurHash3.Hash32(bytes: span, seed: 123456U);
 
 # Benchmarks
 
-
-
+```
 // * Summary *
 
 BenchmarkDotNet=v0.12.0, OS=macOS Mojave 10.14.6 (18G103) [Darwin 18.7.0]
@@ -46,6 +45,7 @@ Intel Core i7-7660U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cor
 .NET Core SDK=3.1.100
   [Host]     : .NET Core 3.1.0 (CoreCLR 4.700.19.56402, CoreFX 4.700.19.56404), X64 RyuJIT
   DefaultJob : .NET Core 3.1.0 (CoreCLR 4.700.19.56402, CoreFX 4.700.19.56404), X64 RyuJIT
+```
 
 ## Byte[] to uint
 

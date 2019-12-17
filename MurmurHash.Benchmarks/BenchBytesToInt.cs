@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.HashFunction.xxHash;
-using System.Linq;
 using System.Text;
 using BenchmarkDotNet.Attributes;
 using Murmur;
@@ -17,7 +16,6 @@ namespace MurmurHash.Benchmarks
         private int _itemsCount = 500;
         private IxxHash _xxHash = xxHashFactory.Instance.Create();
         private Murmur32 murMurDarrenkopp = Murmur.MurmurHash.Create32(seed: 293U, managed: false);
-        private int maxBytesCount;
 
         public BenchBytesToInt()
         {
@@ -27,7 +25,6 @@ namespace MurmurHash.Benchmarks
                 _byteArrays.Add(item);
             }
             _byteArrays.Shuffle();
-            maxBytesCount = _byteArrays.Max(x => x.Length);
         }
         
         [Benchmark]

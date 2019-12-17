@@ -37,6 +37,8 @@ uint hash = MurmurHash3.Hash32(bytes: span, seed: 123456U);
 
 # Benchmarks
 
+
+
 // * Summary *
 
 BenchmarkDotNet=v0.12.0, OS=macOS Mojave 10.14.6 (18G103) [Darwin 18.7.0]
@@ -57,10 +59,10 @@ Intel Core i7-7660U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cor
 
 ## String to uint
 
-|                 Method |      Mean |    Error |   StdDev | Ratio | RatioSD |    Gen 0 | Gen 1 | Gen 2 | Allocated |
-|----------------------- |----------:|---------:|---------:|------:|--------:|---------:|------:|------:|----------:|
-|                  CRC32 |  62.34 us | 1.239 us | 1.159 us |  2.56 |    0.05 |  15.2588 |     - |     - |   32000 B |
-|                 XxHash | 210.44 us | 4.067 us | 4.842 us |  8.62 |    0.29 | 103.2715 |     - |     - |  216000 B |
-| MurMurHashByDarrenkopp |  76.71 us | 1.517 us | 2.575 us |  3.13 |    0.11 |  30.6396 |     - |     - |   64000 B |
-|                Blake2B | 131.63 us | 3.311 us | 9.499 us |  5.33 |    0.55 |  22.9492 |     - |     - |   48000 B |
-|          MurMurHashNet |  24.43 us | 0.476 us | 0.549 us |  1.00 |    0.00 |        - |     - |     - |         - |
+|                 Method |      Mean |    Error |    StdDev | Ratio | RatioSD |    Gen 0 | Gen 1 | Gen 2 | Allocated |
+|----------------------- |----------:|---------:|----------:|------:|--------:|---------:|------:|------:|----------:|
+|                  CRC32 |  65.63 us | 1.295 us |  1.385 us |  3.00 |    0.08 |  15.2588 |     - |     - |   32000 B |
+|                 XxHash | 228.36 us | 7.750 us | 21.086 us |  9.52 |    0.28 | 103.2715 |     - |     - |  216000 B |
+| MurMurHashByDarrenkopp |  77.14 us | 1.600 us |  2.490 us |  3.53 |    0.15 |  30.6396 |     - |     - |   64000 B |
+|                Blake2B | 119.69 us | 2.379 us |  2.443 us |  5.46 |    0.18 |  22.9492 |     - |     - |   48000 B |
+|          MurMurHashNet |  21.91 us | 0.389 us |  0.364 us |  1.00 |    0.00 |        - |     - |     - |         - |

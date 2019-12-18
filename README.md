@@ -37,7 +37,7 @@ uint hash = MurmurHash3.Hash32(bytes: span, seed: 123456U);
 
 # Benchmarks
 
-```
+``` ini
 // * Summary *
 
 BenchmarkDotNet=v0.12.0, OS=macOS Mojave 10.14.6 (18G103) [Darwin 18.7.0]
@@ -49,20 +49,28 @@ Intel Core i7-7660U CPU 2.50GHz (Kaby Lake), 1 CPU, 4 logical and 2 physical cor
 
 ## Byte[] to uint
 
-|                 Method |      Mean |    Error |    StdDev |    Median | Ratio | RatioSD |   Gen 0 | Gen 1 | Gen 2 | Allocated |
-|----------------------- |----------:|---------:|----------:|----------:|------:|--------:|--------:|------:|------:|----------:|
-|                  CRC32 |  40.73 us | 0.744 us |  0.696 us |  40.70 us |  3.32 |    0.06 |       - |     - |     - |         - |
-|                 XxHash | 197.13 us | 3.968 us | 10.995 us | 194.38 us | 15.65 |    0.62 | 87.8906 |     - |     - |  184000 B |
-| MurMurHashByDarrenkopp |  51.46 us | 1.202 us |  3.469 us |  50.85 us |  4.04 |    0.16 | 15.3198 |     - |     - |   32000 B |
-|                Blake2B |  91.83 us | 1.834 us |  3.949 us |  90.26 us |  7.57 |    0.41 |  7.5684 |     - |     - |   16000 B |
-|          MurMurHashNet |  12.28 us | 0.131 us |  0.122 us |  12.29 us |  1.00 |    0.00 |       - |     - |     - |         - |
+|                 Method |      Mean |    StdDev | Ratio | RatioSD |   Gen 0 | Allocated |
+|----------------------- |----------:|----------:|------:|--------:|--------:|----------:|
+|                  CRC32 |  40.73 us |  0.696 us |  3.32 |    0.06 |       - |         - |
+|                 XxHash | 197.13 us | 10.995 us | 15.65 |    0.62 | 87.8906 |  184000 B |
+| MurMurHashByDarrenkopp |  51.46 us |  3.469 us |  4.04 |    0.16 | 15.3198 |   32000 B |
+|                Blake2B |  91.83 us |  3.949 us |  7.57 |    0.41 |  7.5684 |   16000 B |
+|          MurMurHashNet |  12.28 us |  0.122 us |  1.00 |    0.00 |       - |         - |
 
 ## String to uint
 
-|                 Method |      Mean |    Error |    StdDev | Ratio | RatioSD |    Gen 0 | Gen 1 | Gen 2 | Allocated |
-|----------------------- |----------:|---------:|----------:|------:|--------:|---------:|------:|------:|----------:|
-|                  CRC32 |  65.63 us | 1.295 us |  1.385 us |  3.00 |    0.08 |  15.2588 |     - |     - |   32000 B |
-|                 XxHash | 228.36 us | 7.750 us | 21.086 us |  9.52 |    0.28 | 103.2715 |     - |     - |  216000 B |
-| MurMurHashByDarrenkopp |  77.14 us | 1.600 us |  2.490 us |  3.53 |    0.15 |  30.6396 |     - |     - |   64000 B |
-|                Blake2B | 119.69 us | 2.379 us |  2.443 us |  5.46 |    0.18 |  22.9492 |     - |     - |   48000 B |
-|          MurMurHashNet |  21.91 us | 0.389 us |  0.364 us |  1.00 |    0.00 |        - |     - |     - |         - |
+|                 Method |      Mean |    StdDev | Ratio | RatioSD |    Gen 0 | Allocated |
+|----------------------- |----------:|----------:|------:|--------:|---------:|----------:|
+|                  CRC32 |  65.63 us |  1.385 us |  3.00 |    0.08 |  15.2588 |   32000 B |
+|                 XxHash | 228.36 us | 21.086 us |  9.52 |    0.28 | 103.2715 |  216000 B |
+| MurMurHashByDarrenkopp |  77.14 us |  2.490 us |  3.53 |    0.15 |  30.6396 |   64000 B |
+|                Blake2B | 119.69 us |  2.443 us |  5.46 |    0.18 |  22.9492 |   48000 B |
+|          MurMurHashNet |  21.91 us |  0.364 us |  1.00 |    0.00 |        - |         - |
+
+## Legend
+
+* CRC32 - https://www.nuget.org/packages/Crc32/1.1.0
+* XxHash - https://www.nuget.org/packages/System.Data.HashFunction.xxHash/2.0.0
+* MurMurHashByDarrenkopp - https://www.nuget.org/packages/murmurhash/1.0.3
+* Blake2B - https://www.nuget.org/packages/SauceControl.Blake2Fast/1.0.0
+* MurMurHashNet - https://www.nuget.org/packages/MurmurHash.Net/0.0.1 (this repo)

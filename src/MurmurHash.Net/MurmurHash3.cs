@@ -5,7 +5,13 @@ namespace MurmurHash.Net
 {
     public class MurmurHash3
     {
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint Hash32(Span<byte> bytes, uint seed)
+        {
+            return Hash32((ReadOnlySpan<byte>)bytes, seed);
+        }
+
+        public static uint Hash32(ReadOnlySpan<byte> bytes, uint seed)
         {
             var length = bytes.Length;
             var h1 = seed;
@@ -32,7 +38,7 @@ namespace MurmurHash.Net
 
                 h1 ^= RotateLeft(num * 3432918353U, 15) * 461845907U;
             }
-            
+
             h1 = FMix(h1 ^ (uint) length);
 
             return h1;
@@ -52,5 +58,4 @@ namespace MurmurHash.Net
             return h ^ h >> 16;
         }
     }
-
 }

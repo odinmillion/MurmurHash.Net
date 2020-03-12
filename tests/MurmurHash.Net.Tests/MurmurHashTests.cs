@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using System;
 using Xunit;
 
 namespace MurmurHash.Net.Tests
@@ -28,11 +27,7 @@ namespace MurmurHash.Net.Tests
         [InlineData(new byte[] {0x0}, 0U, 0x514E28B7U)]
         public void SmokeTest(byte[] bytes, uint seed, uint expectedHash)
         {
-            var asSpan = new Span<byte>(bytes);
-            var asReadOnlySpan = new ReadOnlySpan<byte>(bytes);
-
-            MurmurHash3.Hash32(asSpan, seed).Should().Be(expectedHash);
-            MurmurHash3.Hash32(asReadOnlySpan, seed).Should().Be(expectedHash);
+            MurmurHash3.Hash32(bytes, seed).Should().Be(expectedHash);
         }
     }
 }

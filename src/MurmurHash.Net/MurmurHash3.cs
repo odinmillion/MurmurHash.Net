@@ -5,12 +5,6 @@ namespace MurmurHash.Net
 {
     public class MurmurHash3
     {
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Hash32(Span<byte> bytes, uint seed)
-        {
-            return Hash32((ReadOnlySpan<byte>)bytes, seed);
-        }
-
         public static uint Hash32(ReadOnlySpan<byte> bytes, uint seed)
         {
             var length = bytes.Length;

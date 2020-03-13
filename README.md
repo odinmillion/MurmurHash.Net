@@ -6,7 +6,7 @@
 
 Extremely fast MurmurHash3 implementation with zero heap allocations
 
-This is an fork of the [System.Data.HashFunction.MurmurHash](https://www.nuget.org/packages/System.Data.HashFunction.MurmurHash/).
+This is a fork of the [System.Data.HashFunction.MurmurHash](https://www.nuget.org/packages/System.Data.HashFunction.MurmurHash/).
 
 # Differences
 * Faster (zero heap allocations via Spans, reduced class inheritance, bytes to uint conversion optimisations)

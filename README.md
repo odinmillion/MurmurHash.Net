@@ -29,9 +29,9 @@ Console.WriteLine(hash);
 3800434721
 ```
 
-### Some code 2. State-of-the-art Span&lt;byte&gt; also supported
+### Some code 2. State-of-the-art Span&lt;byte&gt; and ReadOnlySpan&lt;byte&gt; also supported
 ```csharp
-Span<byte> span = ...
+ReadOnlySpan<byte> span = ...
 uint hash = MurmurHash3.Hash32(bytes: span, seed: 123456U);
 ```
 
